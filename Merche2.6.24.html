@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 24</title>
+</head>
+<body>
+    <script>
+
+        let tareas = [];
+
+        function mostrarMenu() {
+            return prompt(`Selecciona una opción:
+            1. AGREGAR TAREA
+            2. MODIFICAR TAREA
+            3. ELIMINAR TAREA
+            4. VER TAREAS
+            5. SALIR
+            `);
+        }
+
+        let opcion;
+
+        do {
+            opcion = mostrarMenu();
+
+            switch (opcion) {
+                case "1":
+                    const nuevaTarea = prompt("Describe la tarea que quieres añadir: ");
+                    if (nuevaTarea) {
+                        tareas.push(nuevaTarea);
+                        alert("🟢 Tarea agregada correctamente.");
+                    } else {
+                        alert("No se puede agregar una tarea vacía.");
+                    }
+                    break;
+
+                case "2":
+                    const numeroModificar = parseInt(prompt("Ingresa el número de la tarea que deseas modificar")) - 1 ;
+                    if ( numeroModificar >= 0 && numeroModificar < tareas.length ){
+                        const tareaActual = tareas[ numeroModificar ];
+                        const nuevaTarea = prompt(`Tarea actual: ${tareaActual}\n Describe la nueva tarea:`);
+                        if (nuevaTarea) {
+                            tareas[numeroModificar] = nuevaTarea;
+                            alert("🟢 Tarea modificada correctamente")
+                        }
+                    } else {
+                        alert("Número de tarea inválido");
+                    }
+                    break;
+
+                case "3":
+                    const numeroEliminar = parseInt(prompt("Ingresa el número de la tarea que deseas eliminar: ")) -1;
+
+                    if ( numeroEliminar >= 0 && numeroEliminar < tareas.length ) {
+                        const tareaEliminar = tareas[ numeroEliminar];
+                        const confirmacion = confirm(`¿Está seguro de que desea eliminar la tarea ${tareaEliminar}`);
+
+                        if (confirmacion) {
+                            tareas.splice(numeroEliminar, 1);
+                            alert("🟢 Tarea eliminada correctamente");
+
+                        } else {
+                            alert("Eliminación cancelada");
+                        }
+                    }
+                    break;
+
+                case "4":
+                    if (tareas.length > 0 ) {
+                        alert("TAREAS \n " + tareas.map((tarea, index) => `Tarea ${index + 1}: ${tarea}`).join("\n"));
+                    } else {
+                        alert("No tienes tareas creadas.")
+                    }
+                    break;
+
+                case "5": 
+                    alert("SALIENDO DEL PROGRAMA.")
+                    break;
+
+                default:
+                    alert("Opción no válida. Por favor, seleccione una opción del menu")
+                    break;
+            }
+        } while ( opcion !== 5 );
+
+    </script>
+</body>
+</html>
