@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+    <script>
+        
+    let peliculaElegida = prompt("Elige tu película favorita:\n1. Interestatal 60 \n2. Whiplash \n3. Pieles \n4. El planeta salvaje \n5. Idiocracia");
+
+    switch (peliculaElegida) {
+        case '1': 
+            document.write(`
+                <h1>Su ticket ha sido generado correctamente para la pelicula Interestatal</h1>
+                <img src="./peliculas-imagenes/interstate_60_episodes_of_the_road-639115272-large.jpg" alt="Interestatal" style="width: 300px;">
+            `);
+            break;
+        case '2':
+            document.write(`
+                <h1>Su ticket ha sido generado correctamente para la pelicula Whiplash</h1>
+                <img src="./peliculas-imagenes/whiplash-344887410-large.jpg" alt="Whiplash" style="width: 300px;">
+            `);
+            break;
+        case '3':
+            document.write(`
+                <h1>Su ticket ha sido generado correctamente para la pelicula Pieles</h1>
+                <img src="./peliculas-imagenes/Pieles.jpg" alt="Pieles" style="width: 300px;">
+            `);
+            break;
+        case '4':
+            document.write(`
+                <h1>Su ticket ha sido generado correctamente para la pelicula El planeta salvaje</h1>
+                <img src="./peliculas-imagenes/El_planeta_salvaje-446453380-large.jpg" alt="El planeta salvaje" style="width: 300px;">
+            `);
+            break;
+        case '5':
+            document.write(`
+                <h1>Su ticket ha sido generado correctamente para la pelicula Idiocracia</h1>
+                <img src="./peliculas-imagenes/8iO3iSWhlIqd0mCtW7iTJaThled.jpg" alt="Idiocracia" style="width: 300px;">
+            `);
+            break;
+        default:
+            document.write("<h1>Opción no válida. Por favor, elige un número del 1 al 5.")
+    }
+
+    </script>
+</body>
+</html>
