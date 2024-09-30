@@ -8,7 +8,7 @@
 <body>
     <script>
 
-        let tareas = [];
+        const tareas = [];
 
         function mostrarMenu() {
             return prompt(`Selecciona una opción:
@@ -40,7 +40,7 @@
                     const numeroModificar = parseInt(prompt("Ingresa el número de la tarea que deseas modificar")) - 1 ;
                     if ( numeroModificar >= 0 && numeroModificar < tareas.length ){
                         const tareaActual = tareas[ numeroModificar ];
-                        const nuevaTarea = prompt(`Tarea actual: ${tareaActual}\n Describe la nueva tarea:`);
+                        const nuevaTarea = prompt(`Tarea actual: ${tareaActual} \n Describe la nueva tarea:`);
                         if (nuevaTarea) {
                             tareas[numeroModificar] = nuevaTarea;
                             alert("🟢 Tarea modificada correctamente")
@@ -55,7 +55,7 @@
 
                     if ( numeroEliminar >= 0 && numeroEliminar < tareas.length ) {
                         const tareaEliminar = tareas[ numeroEliminar];
-                        const confirmacion = confirm(`¿Está seguro de que desea eliminar la tarea ${tareaEliminar}`);
+                        const confirmacion = confirm(`¿Está seguro de que desea eliminar la tarea: ${tareaEliminar}`);
 
                         if (confirmacion) {
                             tareas.splice(numeroEliminar, 1);
