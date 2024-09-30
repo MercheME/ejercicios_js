@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <script>
+        
+        let numero = prompt("Introduce un número: ");
+
+        numero = parseFloat(numero);
+
+        if ( !isNaN(numero) ) {
+            if ( numero % 2 === 0) {
+                alert(`El número ${numero} es par`)         
+            } else {
+                alert(`El número ${numero} es impar`)
+            } 
+        }else {
+            alert("Pro favor, introduce un número válido")
+        }
+
+    </script>
+</body>
+</html>
