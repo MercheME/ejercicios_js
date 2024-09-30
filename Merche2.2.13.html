@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 13</title>
+</head>
+<body>
+    
+    <script>
+        const contrasenaGuardada = "12345";
+
+        let intentos = 3;
+
+        while (intentos > 0) {
+          
+            let contrasenaIngresada = prompt("Por favor, introduzca la contraseña:");
+
+            if (contrasenaIngresada === contrasenaGuardada) {
+                alert("¡Contraseña correcta! Puedes ingresar al sistema.");
+                break; 
+            } else {
+                intentos--;
+                alert(`Contraseña incorrecta. Te quedan ${intentos} intentos.`);
+            }
+            
+            if (intentos === 0) {
+                alert("Has agotado todos tus intentos. Acceso denegado.");
+            }
+        }
+
+    </script>
+
+</body>
+</html>
