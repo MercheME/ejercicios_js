@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <script>
+        
+        const numeroSecreto = 3;
+        
+        let numeroElegido = prompt("Adivina el número secreto (entre 1 y 10): ");
+
+        numeroElegido = parseInt(numeroElegido, 10);
+
+        if (numeroElegido === numeroSecreto){
+            alert("🟢 Adivinaste el número!")
+        } else {
+            if (numeroElegido > numeroSecreto ){
+                alert("el número secreto es más bajo");
+            } else {
+                alert("El número secreto es más alto");
+            }
+        }
+
+    </script>
+</body>
+</html>
