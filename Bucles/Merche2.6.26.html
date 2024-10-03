@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUEGO SIMON DICE</title>
+</head>
+<body>
+    <script>
+
+        function juegoSimonDice() {
+            const colores = {
+                'rojo' : '🔴',
+                'azul' : '🔵',
+                'verde': '🟢',
+                'amarillo': '🟡',
+                };
+            let secuencia = [];
+            let rondasSuperadas = 0;
+            
+            let tipo = prompt(`Elige el tipo de juego: \n
+                1. Juego infinito \n
+                2. Elegir cantidad de rondas`);
+
+            // Si elige la tipo 2
+            let rondasMaximas = 0;
+            if (tipo === '2') {
+                rondasMaximas = parseInt(prompt("¿Cuántas rondas deseas jugar?"), 3);
+                if (isNaN(rondasMaximas) || rondasMaximas <= 0) {
+                    console.log("Número de rondas inválido. Se jugará indefinidamente.");
+                    tipo = '1'; 
+                }
+            }
+
+            function obtenerColorAleatorio() {
+                const claves = Object.keys(colores);
+                const indice = Math.floor(Math.random() * claves.length);
+                return claves[indice];
+            }
+
+            // Bucle del juego
+            while (tipo === '1' || rondasSuperadas < rondasMaximas) {
+
+                const nuevoColor = obtenerColorAleatorio();
+                secuencia.push(nuevoColor);
+
+                // Muestra secuencia de colores
+                console.log("Secuencia de colores: " + secuencia.map(color => colores[color]).join(' '));
+
+                // Pedir al jugador que ingrese secuencia
+                for (let i = 0; i < secuencia.length; i++) {
+                    let colorIngresado = prompt("Ingresa el color número " + (i + 1) + ": (rojo, azul, verde, amarillo)").toLowerCase();
+                    
+                    if (colorIngresado !== secuencia[i]) {
+                        console.log("👎🏼 Fallaste la secuencia. Rondas superadas: " + rondasSuperadas);
+                        return; // 
+                    }
+                }
+
+                // Si pasa la secuencia acertando los coclores
+                rondasSuperadas++;
+                console.log(`👌🏼 ¡Secuencia correcta! Has superado ${rondasSuperadas} rondas.`);
+
+                // Verificar si se ha llegado a la cantidad máxima de rondas en la tipo 2
+                if (tipo === '2' && rondasSuperadas >= rondasMaximas) {
+                    console.log(" 🏆 ¡Felicidades! Has completado todas las rondas. ¡Victoria!");
+                    return; 
+                }
+            }
+        }
+
+        // Iniciar el juego
+        juegoSimonDice();
+
+    </script>
+</body>
+</html>
+
