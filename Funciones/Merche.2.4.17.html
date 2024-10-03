@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function facturacion(precio, medioPago) {
+            let descuento = 0;
+
+            if (precio >= 200 && precio <= 400) {
+                switch (medioPago) {
+                    case 'E':
+                        descuento = 0.30;
+                        break;
+                    case 'D': 
+                        descuento = 0.20;
+                        break;
+                    case 'C': 
+                        descuento = 0.10;
+                        break;
+                    default:
+                        console.log("Medio de pago no válido.");
+                        return; 
+                }
+            } else if (precio > 400) {
+                descuento = 0.40; 
+            }
+
+            let precioFinal = precio - (precio * descuento);
+
+            return precioFinal;
+        }
+
+        let total = facturacion(230, 'E'); 
+        console.log(`El precio final a abonar es: ${total} €`);
+
+    </script>
+</body>
+</html>
