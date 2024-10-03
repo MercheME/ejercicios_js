@@ -23,7 +23,6 @@
                 1. Juego infinito \n
                 2. Elegir cantidad de rondas`);
 
-            // Si elige la tipo 2
             let rondasMaximas = 0;
             if (tipo === '2') {
                 rondasMaximas = parseInt(prompt("¿Cuántas rondas deseas jugar?"), 3);
@@ -39,7 +38,6 @@
                 return claves[indice];
             }
 
-            // Bucle del juego
             while (tipo === '1' || rondasSuperadas < rondasMaximas) {
 
                 const nuevoColor = obtenerColorAleatorio();
@@ -58,7 +56,7 @@
                     }
                 }
 
-                // Si pasa la secuencia acertando los coclores
+                // Si pasa la secuencia acertando los colores
                 rondasSuperadas++;
                 console.log(`👌🏼 ¡Secuencia correcta! Has superado ${rondasSuperadas} rondas.`);
 
