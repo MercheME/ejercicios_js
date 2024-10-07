@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 23</title>
+</head>
+<body>
+    <script>
+        
+        const canciones = [
+            ["Toto", "Africa"],
+            ["Queen", "Bohemian Rhapsody"],
+            ["Toto", "Rosanna"],
+            ["Queen", "Don't Stop Me Now"],
+            ["The Beatles", "Hey Jude"],
+        ];
+
+        function mostrarMenu() {
+            return prompt(`Menú:
+            1. Agregar canción
+            2. Buscar canciones
+            3. Listar artistas
+            4. Salir`);
+        }
+
+        function capitalizarNombre( nombre ) {
+            if (nombre.length === 0) return ""; 
+            return nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase(); 
+        }
+
+        function agregarCancion() {
+            const input = prompt('Ingrese el nombre de la canción y su artista, separados por "," (Ejemplo: Africa, Toto)');
+            
+            // Dividir la entrada y eliminar espacios innecesarios
+            const partes = input.split(',').map(str => str.trim());
+
+            // Validar que haya dos partes: canción y artista
+            if (partes.length === 2) {
+                const cancion = capitalizarNombre( partes[0] );
+                const artista = capitalizarNombre ( partes[1]) ; 
+                
+                canciones.push([artista, cancion]);
+                alert(`Canción: "${cancion}" del artista: "${artista}" agregada.`);
+            } else {
+                alert('Entrada inválida.');
+            }
+        }
+
+        function buscarCanciones() {
+            const artista = prompt('Ingrese el nombre del artista:').trim();
+            
+            // Filtrar canciones que coincidan con el artista ingresado (sin importar mayúsculas/minúsculas)
+            const cancionesArtista = canciones.filter(c => c[0].toLowerCase() === artista.toLowerCase());
+            
+            if (cancionesArtista.length > 0) {
+                const listaCanciones = cancionesArtista.map(c => c[1]).join(', '); // Obtener solo los nombres de las canciones
+                alert(`Canciones de ${capitalizarNombre(artista)}: \n${listaCanciones}\n`);
+            } else {
+                alert(`No se encontraron canciones para el artista "${artista}".`);
+            }
+        }
+
+        function listarArtistas() {
+            // Obtener todos los artistas
+            const artistas = canciones.map(c => c[0]);
+            
+            const artistasUnicos = artistas.filter((artista, index) => {
+                return artistas.indexOf(artista) === index; // Solo mantiene el primer índice del artista
+            });
+
+            if (artistasUnicos.length > 0) {
+                alert(`Artistas: \n${artistasUnicos.join('\n')}`);
+            } else {
+                alert('No hay artistas en la lista.');
+            }
+        }
+
+        function iniciarPrograma() {
+
+            let opcion;
+            do {
+                opcion = mostrarMenu();
+                switch (opcion) {
+                    case '1':
+                        agregarCancion(); 
+                        break;
+                    case '2':
+                        buscarCanciones();
+                        break;
+                    case '3':
+                        listarArtistas(); 
+                        break;
+                    case '4':
+                        alert('¡Gracias por usar el programa! Adiós.'); 
+                        break;
+                    default:
+                        alert('Opción inválida. Por favor elige entre 1 y 4.');
+                        break;
+                }
+            } while (opcion !== '4'); 
+        }
+
+        iniciarPrograma();
+
+
+    </script>
+</body>
+</html>

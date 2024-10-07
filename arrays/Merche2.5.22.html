@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejericio 22</title>
+</head>
+<body>
+    <script>
+        
+    const tablero = [
+        ['🌱', '🌱', '🍎', '🌱', '🌱'],
+        ['🍎', '🧱', '🌱', '🧱', '🍎'],
+        ['🌱', '🧱', '🐍', '🌱', '🌱'],
+        ['🌱', '🍎', '🌱', '🧱', '🌱'],
+        ['🍎', '🌱', '🌱', '🍎', '🧱'],
+        ['🌱', '🌱', '🌱', '🌱', '🍎'],    
+    ];
+;
+
+    // Posición inicial de la víbora
+    let vibora = { x: 2, y: 2 };
+
+    let manzanasRestantes = 7;
+
+    function mostrarTablero() {
+        tablero.forEach(fila => console.log(fila.join(' ')));
+        console.log('Usa W (arriba), A (izquierda), S (abajo), D (derecha) para moverte.');
+    }
+
+    function moverVibora( direccion ) {
+        let nuevaX = vibora.x;
+        let nuevaY = vibora.y;
+
+        if (direccion === 'W') nuevaX--; // Arriba
+        else if (direccion === 'S') nuevaX++; // Abajo
+        else if (direccion === 'A') nuevaY--; // Izquierda
+        else if (direccion === 'D') nuevaY++; // Derecha
+
+        // bordes conectados
+        if (nuevaX < 0) nuevaX = tablero.length - 1; // Arriba -> abajo
+        if (nuevaX >= tablero.length) nuevaX = 0; // Abajo -> arriba
+        if (nuevaY < 0) nuevaY = tablero[0].length - 1; // Izquierda -> derecha
+        if (nuevaY >= tablero[0].length) nuevaY = 0; // Derecha -> izquierda
+
+        if (tablero[nuevaX][nuevaY] === '🧱') {
+            console.log('No puedes atravesar ladrillos. Intenta otra dirección.');
+            return;
+        }
+
+        if (tablero[nuevaX][nuevaY] === '🍎') {
+            console.log('¡Comiste una manzana!');
+            manzanasRestantes--;
+        }
+
+        // Mover la víbora a la nueva posición
+        tablero[vibora.x][vibora.y] = '🌱'; // Dejar vacío donde estaba la víbora
+        vibora.x = nuevaX;
+        vibora.y = nuevaY;
+        tablero[vibora.x][vibora.y] = '🐍'; // Colocar la víbora en la nueva posición
+    }
+
+    function jugar() {
+        mostrarTablero();
+
+        if (manzanasRestantes === 0) {
+            console.log('¡Felicidades! Has comido todas las manzanas. ¡Ganaste!');
+            return;
+        }
+
+        // Leer la dirección del jugador
+        const input = prompt('Mover (W/A/S/D):');
+        const direccion = input.toUpperCase();
+
+        if (['W', 'A', 'S', 'D'].includes(direccion)) {
+            moverVibora(direccion);
+        } else {
+            console.log('Movimiento inválido. Usa W, A, S, D para moverte.');
+        }
+
+        jugar();
+    }
+
+    jugar();
+
+    </script>
+</body>
+</html>
