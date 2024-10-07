@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 20</title>
+</head>
+<body>
+    <script>
+        const toDoList = ['Hacer los deberes', 'Practicar yoga', 'Dar comida al gato', 'Leer un libro', 'Salir a pasear'];
+        console.table(toDoList);
+        
+        const tareaABuscar = "Hacer los deberes";
+
+        let indiceTarea = toDoList.indexOf(tareaABuscar);
+
+        if (indiceTarea !== -1) {
+            toDoList.splice(indiceTarea, 1);
+            console.log(`Tarea eliminada: ${tareaABuscar}`);
+        } else {
+            console.log("La tarea no se encontró en la lista");
+        }
+        
+        console.table(toDoList);
+    </script>
+</body>
+</html>

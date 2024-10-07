@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 21</title>
+</head>
+<body>
+    <script>
+
+        const tablero = [
+                ['📦', '💣', '💣'],
+                ['📦', '📦', '📦'],
+                ['💣', '📦', '📦'],
+            ];
+        
+        let tableroVisible = [
+            ['📦', '📦', '📦'],
+            ['📦', '📦', '📦'],
+            ['📦', '📦', '📦']
+            ];
+        
+        let filaIndex = 0;
+            
+        function mostrarTablero() {
+    
+            console.log("Tablero:   ");
+
+            let tableroTexto = ''; 
+
+            tableroVisible.forEach(fila => {
+                console.log(fila.join(' ') + " "); // El 8203 es un carácter invisible
+                filaIndex++;
+            });
+        }
+
+        function jugar() {
+            let totalCasillasVacias = 0;
+
+            tablero.forEach(fila => {
+                fila.forEach( casilla => {
+                    if (casilla === '📦') totalCasillasVacias++;
+                })
+            });
+
+            while (true) {
+                mostrarTablero(tableroVisible);
+
+                const fila = parseInt(prompt("Ingresa la fila ( 0 - 2 ):"));
+                let columna = parseInt(prompt("Ingresa la columna ( 0 - 2 ):"));
+
+                if (fila < 0 || fila >= tablero.length || columna < 0 || columna >= tablero[0].length) {
+                    console.log("Coordenadas inválidas. Intenta nuevamente.");
+                    continue;
+                }
+
+                if (tablero[fila][columna] === '💨') {
+                    console.log("Ya descubriste esa casilla. Intenta otra.");
+                    continue;
+                }
+
+                if (tablero[fila][columna] === '💣') {
+                    
+                    tableroVisible[fila][columna] = '💥'; 
+                    mostrarTablero(tableroVisible);
+                    console.log("¡Oh no! ¡Has encontrado una bomba!");
+                    console.log("¡Has perdido!");
+                    break; 
+
+                } else {
+                   
+                    tableroVisible[fila][columna] = '💨'; 
+                    console.log("La caja está vacía. Sigue jugando.");
+                    totalCasillasVacias--; 
+
+                    if (totalCasillasVacias === 0) {
+                        mostrarTablero(tableroVisible);
+                        console.log("¡Felicidades! Has descubierto todas las casillas vacías. ¡Ganaste!");
+                        break; 
+                    }
+                }
+            }
+        }
+
+        jugar();
+
+
+    </script>
+</body>
+</html>
