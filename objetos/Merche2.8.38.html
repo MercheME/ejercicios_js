@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio  38</title>
+</head>
+<body>
+    <script>
+
+        const animal = {
+            nombre : 'Perri',
+            isAnimal: true,
+            printRuido: function hablar () {
+                console.log(`My name is ${this.name}. Am I animal? ${this.isAnimal}`);
+            },
+        };
+
+        const perro = Object.create(animal);
+
+        perro.printRuido = 'Guauuuuuuuu! 🐶'
+
+        console.log(perro.printRuido);
+
+
+    </script>
+</body>
+</html>

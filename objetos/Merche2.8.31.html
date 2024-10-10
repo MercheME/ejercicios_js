@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 31</title>
+</head>
+<body>
+    <script>
+        const coche = {
+            "marca": "Citroen",
+            "modelo": "C5",
+            "anyo": 2000
+        }
+
+        coche.anyo = 1997;
+        
+        coche["color"] = "red";
+
+        for (const prop in coche) {
+            console.log(`coche ${prop} = ${coche[prop]}`);
+        }
+        
+    </script>
+</body>
+</html>

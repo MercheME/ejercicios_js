@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 37</title>
+</head>
+<body>
+    <script>
+
+        const producto = {
+            'nombre' : 'galletas saladas',
+            'precio' : 3.24,
+            'cantidad' : 2
+        }
+
+        const copia = Object.assign({}, producto);
+
+        copia.cantidad = 10;
+
+        console.log('Producto original sin modificar: ');
+
+        for (const prop in producto) {
+            console.log(`Producto ${prop} = ${producto[prop]}`);
+        }
+
+        console.log('Copia del producto original con modificaciones: ');
+
+        for (const prop in copia) {
+            console.log(`Producto ${prop} = ${copia[prop]}`);
+        }
+
+
+    </script>
+</body>
+</html>

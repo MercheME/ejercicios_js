@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const alumnos = [
+            {
+                'nombre': 'Merche',
+                'edad': 30,
+                'nota': 8
+            },
+            {
+                'nombre': 'Juan',
+                'edad': 25,
+                'nota': 9
+            },
+            {
+                'nombre': 'Alex',
+                'edad': 27,
+                'nota': 2
+            },
+            {
+                'nombre': 'Gabriela',
+                'edad': 20,
+                'nota': 10
+            },
+            {
+                'nombre': 'Javi',
+                'edad': 17,
+                'nota': 8
+            },
+            {
+                'nombre': 'Pedro',
+                'edad': 19,
+                'nota': 2
+            }
+        ]
+
+        for (const prop of alumnos) {
+            prop.nota >= 8 ? console.log(`Nombre ${prop.nombre} tiene la nota de ${prop.nota} (es mayor o igual a 8)`) : '';
+
+        }
+
+    </script>
+</body>
+</html>
