@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const set1 = new Set([1, 2]);
+        const set2 = new Set([1, 2, 3, 4]);
+
+        // Convertir set2 a un array para usar filter
+        const set2Array = Array.from(set2);
+        const set1Array = Array.from(set1);
+
+        // Filtrar los elementos de set1 que no están en set2
+        const noEstanEnSet2 = set1Array.filter(valor => !set2Array.includes(valor));
+
+        // Verificar si no hay elementos que no están en set2
+        if (noEstanEnSet2.length === 0) {
+            console.log('set1 es un subconjunto de set2.');
+        } else {
+            console.log('set1 no es un subconjunto de set2.');
+        }
+
+    </script>
+</body>
+</html>

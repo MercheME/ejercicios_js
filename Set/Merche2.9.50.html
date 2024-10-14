@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 50</title>
+</head>
+<body>
+    <script>
+        const objetos = [
+            { id: 1, nombre: 'Objeto A' },
+            { id: 2, nombre: 'Objeto B' },
+            { id: 3, nombre: 'Objeto C' },
+            { id: 2, nombre: 'Objeto B Duplicado' },
+            { id: 1, nombre: 'Objeto A Duplicado' },
+            { id: 4, nombre: 'Objeto D' },
+        ];
+
+        // Eliminar duplicados basándose en la id
+        function eliminarDuplicadosPorId(arr) {
+            const idsUnicos = new Set();
+
+            return arr.filter(function(objeto) {
+                if (!idsUnicos.has(objeto.id)) {
+                    /*
+                    true si el id NO está en el Set (lo que significa que es un id nuevo, no duplicado).
+                    false si el id SÍ está en el Set (lo que significa que es un duplicado).
+                    */
+                    idsUnicos.add(objeto.id);
+                    return true; 
+                }
+                return false; // Ignorar este objeto (es un duplicado)
+            });
+        }
+
+        const objetosSinDuplicados = eliminarDuplicadosPorId(objetos);
+        console.log(objetosSinDuplicados);
+
+    </script>
+</body>
+</html>

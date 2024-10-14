@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 47</title>
+</head>
+<body>
+    <script>
+        
+        const primerSet = new Set([1, 2, 3]);
+        const segundoSet = new Set([2, 3, 4]);
+
+        const interseccion = new Set([...primerSet].filter(valor => segundoSet.has(valor)));
+
+        const arrayInterseccion = Array.from(interseccion);
+        console.log('Interseccion de los dos Set: ',arrayInterseccion);
+        
+    </script>
+</body>
+</html>

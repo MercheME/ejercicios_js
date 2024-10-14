@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const set1 = new Set([1, 2, 3]);
+        const set2 = new Set([3, 4, 5]);
+
+        // Crear un nuevo Set que contenga solo los valores que están en set1 pero no en set2 (diferencia)
+        const diferencia = new Set([...set1].filter(valor => !set2.has(valor)));
+
+        console.log('Diferencia entre los dos Set:', Array.from(diferencia));
+        
+    </script>
+</body>
+</html>

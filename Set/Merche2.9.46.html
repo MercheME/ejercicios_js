@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        const primerSet = new Set([1, 2 ,3]);
+        const segundoSet = new Set([2, 3, 4]);
+
+        const setCombinado = new Set([...primerSet, ...segundoSet]);
+
+        console.log('Contenido del Set combinado: ', Array.from(setCombinado)); // Recuerda que para mostrarlo tienes que pasarlo a array
+
+    </script>
+</body>
+</html>
