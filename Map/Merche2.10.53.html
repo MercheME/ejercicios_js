@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 53</title>
+</head>
+<body>
+    <script>
+        const coches = new Map([
+           ['marca', 'BMW'],
+           ['modelo', '3000'],
+           ['anyo', 2000] 
+        ]);
+
+        const existeModelo = coches.has('modelo');
+
+        console.log(`¿Existe la clave 'modelo'? ${ (existeModelo) ? 'Sí que existe' : 'No existe' } `);
+        
+    </script>
+</body>
+</html>

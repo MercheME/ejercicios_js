@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 62</title>
+</head>
+<body>
+    <script>
+
+        const personas = [
+            { id: 1, nombre: 'Juan' },
+            { id: 2, nombre: 'Gabriela' },
+            { id: 1, nombre: 'Juan' },
+            { id: 1, nombre: 'Merche' },
+            { id: 2, nombre: 'Gabriela' },
+            { id: 3, nombre: 'Adrián' },
+            { id: 4, nombre: 'Juanjo' },
+            { id: 5, nombre: 'Marta' },
+        ];
+
+
+        // NOTA: al haber otro objeto con el mismo id se sobreescribe el nombre 'ejemplo id 1'
+
+        function eliminarDuplicadosPorId( arr ) {
+            const agenda = new Map();
+
+            arr.forEach(objeto => {
+                agenda.set(objeto.id, objeto); // usa el id como clave
+            });
+
+            return Array.from(agenda.values()); // convierte el map a un array de objetos
+        }
+
+        const personasSinDuplicados = eliminarDuplicadosPorId(personas);
+        console.log(personasSinDuplicados);
+    
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 54</title>
+</head>
+<body>
+    <script>
+
+        const persona = new Map([
+           ['nombre', 'Mercedes'],
+           ['apellido', 'Moreno'],
+           ['edad', 30 ] 
+        ]);
+
+        persona.delete('edad');
+
+        persona.forEach((clave, valor) => {
+            console.log(`${clave}: ${valor}`);
+        });
+        
+    </script>
+</body>
+</html>

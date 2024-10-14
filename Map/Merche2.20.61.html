@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 61</title>
+</head>
+<body>
+    <script>
+
+        function sonMapIguales(map1, map2) {
+            
+            // validacion tamaño
+            if (map1.size !== map2.size) {
+                return false;
+            }
+            
+            let sonIguales = true;
+
+            // Importante el orden en '(valor, clave)' a la hora de hacer el foreach
+            // cuando usas forEach en un Map, la función de callback recibe primero el valor y luego la clave
+            
+            map1.forEach((valor, clave) => {
+
+                // verifica si el map2 tiene la misma clave
+                if ( map2.has(clave) ) {
+                    // si la clave existe compara los valores
+                    if (map2.get(clave) !== valor) {
+                        sonIguales = false;
+                        return;
+                    }
+                } else {
+                    sonIguales = false;
+                    return;
+                }
+
+            });
+
+            return sonIguales;
+        }
+
+        const map1 = new Map([
+            ['nombre', 'Merche'],
+            ['edad', 30],
+            ['ciudad', 'Martos']
+        ]);
+
+        const map2 = new Map([
+            ['nombre', 'Merche'],
+            ['edad', 30],
+            ['ciudad', 'Martos']
+        ]);
+
+        const map3 = new Map([
+            ['nombre', 'Marcos'],
+            ['edad', 25],
+            ['ciudad', 'Burunchel']
+        ]);
+
+        console.log(sonMapIguales(map1, map1));
+        console.log(sonMapIguales(map2, map3));
+        
+
+    </script>
+</body>
+</html>
