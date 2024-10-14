@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const palabras = ["electricidad", "javascript", "programación", "igualdad"];
+        const palabraElegida = palabras[Math.floor(Math.random() * palabras.length)];
+        const intentosMaximos = 6;
+        const letrasUsadas = [];
+
+        let intentosRestantes = intentosMaximos;
+        let palabraOculta = "*".repeat(palabraElegida.length); //para que muestre la palabra oculta en *
+        let juegoTerminado = false;
+
+        function mostrarEstado() {
+            console.log(`La palabra es: ${palabraOculta}`);
+            console.log(`Te quedan ${intentosRestantes} intentos para adivinar la palabra.`);
+            console.log(`Letras usadas: ${letrasUsadas.join(", ")}`);
+        }
+
+        //Cada vez que se adivina una letra se actualiza la palabra oculta y se cambian los asteriscos por la letra acertada
+        function actualizarPalabraOculta(letra) {
+            let nuevaPalabraOculta = "";
+            for (let i = 0; i < palabraElegida.length; i++) {
+                if (palabraElegida[i] === letra) {
+                    nuevaPalabraOculta += letra;
+                } else {
+                    // Si no coincide se mantiene el *
+                    // añade el caracter que ya estaba en la palabra oculta
+                    nuevaPalabraOculta += palabraOculta[i];
+                }
+            }
+            palabraOculta = nuevaPalabraOculta;
+        }
+
+        
+        function jugar() {
+            // Mostrar estado del juego
+            mostrarEstado();
+
+            while (!juegoTerminado) {
+                let entrada = prompt("Ingresa una letra o intenta adivinar la palabra:").toLowerCase();
+
+                if (!entrada) {
+                    console.log("Por favor, ingresa algo.");
+                    continue;
+                }
+
+                if (entrada.length === 1) {
+                    // El usuario ingresó una letra
+                    if (letrasUsadas.includes(entrada)) {
+                        console.log("Ya has usado esa letra, intenta con otra.");
+                        continue;
+                    }
+
+                    letrasUsadas.push(entrada);
+
+                    if (palabraElegida.includes(entrada)) {
+                        actualizarPalabraOculta(entrada);
+                    } else {
+                        intentosRestantes--;
+                        console.log(`La letra "${entrada}" no está en la palabra.`);
+                    }
+                } else {
+                    // El usuario intentó adivinar la palabra completa
+                    if (entrada === palabraElegida) {
+                        palabraOculta = palabraElegida;
+                        juegoTerminado = true;
+                        console.log("¡Felicitaciones! Has adivinado la palabra.");
+                        break;
+                    } else {
+                        intentosRestantes = 0; // Pierde el juego 
+                    }
+                }
+
+                // Verificar si se gano o perdio
+                if (palabraOculta === palabraElegida) {
+                    console.log("🏆 ¡Felicidades! Has adivinado la palabra.");
+                    juegoTerminado = true;
+                } else if (intentosRestantes <= 0) {
+                    console.log(`👎🏼 Has perdido. La palabra era: ${palabraElegida}.`);
+                    juegoTerminado = true;
+                } else {
+                    mostrarEstado();
+                }
+            }
+        }
+       
+    jugar();
+         
+    </script>
+</body>
+</html>

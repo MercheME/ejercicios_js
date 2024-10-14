@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          const tablero = [
+        ['🌱', '🌱', '🍎', '🌱', '🌱'],
+        ['🍎', '🧱', '🌱', '🧱', '🍎'],
+        ['🌱', '🧱', '🐍', '🌱', '🌱'],
+        ['🌱', '🍎', '🌱', '🧱', '🌱'],
+        ['🍎', '🌱', '🌱', '🍎', '🧱'],
+        ['🌱', '🌱', '🌱', '🌱', '🍎'],    
+    ];
+;
+
+    // Posición inicial de la víbora
+    let vibora = { x: 2, y: 2 };
+
+    let manzanasRestantes = 7;
+
+    function mostrarTablero() {
+        tablero.forEach(fila => console.log(fila.join(' ')));
+        console.log('Usa W (arriba), A (izquierda), S (abajo), D (derecha) para moverte.');
+    }
+
+    function leerDireccion() {
+        const input = prompt('Mover (W/A/S/D):');
+        return input ? input.toUpperCase() : '';
+    }
+
+    function esDireccionValida(direccion) {
+        return ['W', 'A', 'S', 'D'].includes(direccion);
+    }
+
+    function calcularNuevaPosicion(direccion) {
+        let nuevaX = vibora.x;
+        let nuevaY = vibora.y;
+
+        switch (direccion) {
+            case 'W':
+                nuevaX--; // Arriba
+                    break;
+            case 'S':
+                nuevaX++; // Abajo
+                break;
+            case 'A':
+                nuevaY--; // Izquierda
+                break;
+            case 'D':
+                nuevaY++; // Derecha
+                break;
+        }
+
+        // Bordes conectados
+        nuevaX = (nuevaX + tablero.length) % tablero.length; // Arriba/abajo
+        nuevaY = (nuevaY + tablero[0].length) % tablero[0].length; // Izquierda/derecha
+
+        return { nuevaX, nuevaY };
+    }
+
+    function moverVibora( direccion ) {
+        const { nuevaX, nuevaY } = calcularNuevaPosicion(direccion);
+
+        if (tablero[nuevaX][nuevaY] === '🧱') {
+            console.log('No puedes atravesar ladrillos. Intenta otra dirección.');
+            return;
+        }
+
+        if (tablero[nuevaX][nuevaY] === '🍎') {
+            console.log('¡Comiste una manzana!');
+            manzanasRestantes--;
+        }
+
+        // Mover la víbora a la nueva posición
+        tablero[vibora.x][vibora.y] = '🌱'; // Dejar vacío donde estaba la víbora
+        vibora.x = nuevaX;
+        vibora.y = nuevaY;
+        tablero[vibora.x][vibora.y] = '🐍'; // Colocar la víbora en la nueva posición
+
+    }
+
+    function verificarFinDelJuego() {
+        if (manzanasRestantes === 0) {
+            console.log('¡Felicidades! Has comido todas las manzanas. ¡Ganaste!');
+            return true; // Fin 
+        }
+        return false; // Continuar jugando
+    }
+
+    function jugar() {
+        mostrarTablero();
+
+        if (verificarFinDelJuego()) {
+            return; // Salir si el juego ha terminado
+        }
+        
+        const direccion = leerDireccion();
+        
+
+        if (esDireccionValida(direccion)) {
+            moverVibora(direccion);
+        } else {
+            console.log('Movimiento inválido. Usa W, A, S, D para moverte.');
+        }
+        
+        jugar();
+    }
+
+    jugar();
+
+    </script>
+</body>
+</html>
+  

@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUEGO SIMON DICE</title>
+</head>
+<body>
+    <script>
+
+        //Por defecto cogerá estos colores
+        let coloresJuego = [ 
+            { nombre: 'rojo', icono: '🔴' },
+            { nombre: 'azul', icono: '🔵' },
+            { nombre: 'amarillo', icono: '🟡' },
+            { nombre: 'verde', icono: '🟢' },
+        ];
+
+        const coloresDisponibles = [
+            { nombre: 'rojo', icono: '🔴' },
+            { nombre: 'azul', icono: '🔵' },
+            { nombre: 'verde', icono: '🟢' },
+            { nombre: 'amarillo', icono: '🟡' },
+            { nombre: 'naranja', icono: '🟠' },
+            { nombre: 'violeta', icono: '🟣' },
+            { nombre: 'negro', icono: '⚫' },
+            { nombre: 'blanco', icono: '⚪' },
+            { nombre: 'marrón', icono: '🟤' }
+        ];
+
+        let modoDeJuego = 'SUPERVIVENCIA';
+        let historialPartidas = [];
+
+        // Objeto donde guardamos los colores elegidos por el jugador y sus iconos
+        let coloresSimbolos = {};
+
+        // Inicializa los simbolos de colores elegidos
+        coloresJuego.forEach(color => {
+            coloresSimbolos[color.nombre] = color.icono;
+        });
+        
+        function menuPrincipal() {
+            let opcion = 0;
+
+            do {
+
+                opcion = prompt(`
+                Modo de juego actual: ${modoDeJuego}
+                Colores actuales: ${coloresJuego.map(color => `${color.icono}`).join(' - ')}
+                Partidas jugadas: ${historialPartidas.length}
+
+                Elige una opción:
+                    (1) -> INICIAR JUEGO
+                    (2) -> CAMBIAR MODO
+                    (3) -> CAMBIAR COLORES
+                    (4) -> VER HISTORIAL DE PARTIDAS
+                    (5) -> SALIR
+                `);
+
+                switch (opcion) {
+                    case '1':
+                        juegoSimonDice();
+                        break;
+                    case '2':
+                        cambiarModo();
+                        break;
+                    case '3':
+                        cambiarColores();
+                        break;
+                    case '4':
+                        verHistorial();
+                        break;
+                    case '5':
+                        console.log("Salir del juego");
+                        break;
+                    default:
+                        console.log("Opción no válida. Ingresa una opción 1-5 ");
+                
+                        break;
+                }
+            } while ( opcion !== '5' );
+        }
+
+        function cambiarModo() {
+            let nuevoModo = prompt(`
+            Elige el modo de juego:
+                (1) -> CLÁSICO (rondas limitadas)
+                (2) -> SUPERVIVENCIA (rondas ilimitadas hasta perder)`
+            );
+
+            if (nuevoModo === '1') {
+                modoDeJuego = "CLÁSICO";
+            } else if (nuevoModo === '2') {
+                modoDeJuego = "SUPERVIVENCIA";
+            } else {
+                console.log("Modo no válido. Se mantendrá el modo actual.");
+            }
+        }
+
+        function cambiarColores() {
+            let cantidadColores = parseInt(prompt("¿Cuántos colores quieres usar? (mínimo 4, máximo 9)"));
+
+            if (isNaN(cantidadColores) || cantidadColores < 4 || cantidadColores > 9) {
+                console.log("Número de colores inválido. Debes ingresar entre 4 y 9.");
+                return;
+            }
+
+            coloresJuego = []; // Reiniciar la selección de colores
+            coloresSimbolos = {}; // Resetea los colores elegidos
+
+            console.log("Colores disponibles para elegir:");
+            coloresDisponibles.forEach((color, index) => {
+                // Muestra los colores disponibles y se eligen por posicion
+                console.log(`${index + 1}. ${color.nombre} ${color.icono}`);
+            });
+
+            // Mostrar colores disponibles y pedirle al usuario que los elija
+            for (let i = 0; i < cantidadColores; i++) {
+                let eleccion = parseInt(prompt(`Ingresa el número del color a elegir:`)) - 1;
+
+                // Validaciones
+                if (eleccion < 0 || eleccion >= coloresDisponibles.length || coloresJuego.some(c => c.nombre === coloresDisponibles[eleccion].nombre)) {
+                    console.log("Elección inválida o color ya elegido. Inténtalo de nuevo.");
+                    i--; // para que se repita esta iteración
+                } else {
+                    coloresJuego.push(coloresDisponibles[eleccion]); //Añadimos los colores elegidos al array de colores diponibles
+                    coloresSimbolos[coloresDisponibles[eleccion].nombre] = coloresDisponibles[eleccion].icono; // crea una asociación entre el nombre del color y su ícono en un objeto llamado coloresSimbolos
+                }
+            }
+
+            console.log("Colores elegidos: " + coloresJuego.map(color => `${color.nombre} ${color.icono}`).join(' - '));
+
+        }
+
+        function verHistorial() {
+            if (historialPartidas.length === 0) {
+                console.log("No hay partidas jugadas.");
+                return;
+            }
+
+            historialPartidas.forEach((partida, index) => {
+        console.log(`
+        [Partida ${index + 1}] MODO ${partida.modo}:
+        ${partida.colores.length} colores elegidos.
+        ${partida.rondasGanadas === partida.rondasMax ? `Partida ganada.` : `Derrota en ronda ${partida.rondasGanadas}` }`);
+            });
+        }
+
+        function juegoSimonDice() {
+            
+            let secuencia = [];
+            let rondasSuperadas = 0;
+            let rondasMaximas = 0;
+            
+            if (modoDeJuego === "CLÁSICO") {
+                rondasMaximas = parseInt(prompt("¿Cuántas rondas deseas jugar?"));
+                if (isNaN(rondasMaximas) || rondasMaximas <= 0) {
+                    console.log("Número de rondas inválido. Se jugará en el modo SUPERVIVENCIA");
+                    modoDeJuego = "SUPERVIVENCIA"; 
+                }
+            }
+
+            function obtenerColorAleatorio() {
+                const indice = Math.floor(Math.random() * coloresJuego.length);
+                return coloresJuego[indice];
+            }
+
+            let juegoEnCurso = true;
+
+            while (juegoEnCurso && (modoDeJuego === "SUPERVIVENCIA" || rondasSuperadas < rondasMaximas)) {
+
+                const nuevoColor = obtenerColorAleatorio();
+                secuencia.push(nuevoColor);
+
+                // Muestra secuencia de colores
+                console.log("Secuencia de colores: " + secuencia.map(color => color.icono).join(' - '));
+
+                // Pedir al jugador que ingrese secuencia
+                for (let i = 0; i < secuencia.length; i++) {
+                    let colorIngresado = prompt(`Ingresa el color número ${i + 1}: (${coloresJuego.map(c => c.nombre).join(' - ')})`).toLowerCase();
+                    
+                    if (colorIngresado !== secuencia[i].nombre) {
+                        console.log("👎🏼 Fallaste la secuencia. Rondas superadas: " + rondasSuperadas);
+                        juegoEnCurso = false;
+                        break;
+                    }
+                }
+
+                if (juegoEnCurso) {
+                    rondasSuperadas++;
+                    console.log(`¡Secuencia correcta! Has superado ${rondasSuperadas} rondas.`);
+
+                    if (modoDeJuego === "CLÁSICO" && rondasSuperadas >= rondasMaximas) {
+
+                        console.log("👌🏼 Has completado todas las rondas.");
+                        juegoEnCurso = false;
+                        break;
+                    }
+                }
+
+            }
+
+            // Almacenar resultados de la partida en el historial
+            historialPartidas.push({
+                modo: modoDeJuego,
+                colores: [...coloresJuego],
+                rondasMax: rondasMaximas || 'ilimitadas',
+                rondasGanadas: rondasSuperadas
+            });
+
+            if (rondasSuperadas >= rondasMaximas) {
+                console.log(`🏆 ¡Felicidades! Has ganado la partida con ${rondasSuperadas} rondas superadas.`);
+            } else {
+                console.log(`💔 Has perdido. Superaste ${rondasSuperadas} rondas.`);
+            }
+
+
+            let jugarDeNuevo = prompt("¿Quieres jugar otra vez? (si/no)").toLowerCase();
+
+            if (jugarDeNuevo === "si") {
+                juegoSimonDice();
+            }
+
+    }
+                
+        
+    menuPrincipal();
+
+    </script>
+</body>
+</html>
+
