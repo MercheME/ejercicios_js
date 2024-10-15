@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 64</title>
+</head>
+<body>
+    <script>
+
+        function esPar( num ) {
+            try {
+
+                let mensaje;
+
+                if ( isNaN( num ) ) {
+                    throw new Error ('Debe ingresar un número: ');
+                }
+
+                ( num % 2 === 0 ) ? mensaje = `El número ${num} es Par` : mensaje = `El ${num} NO es par`;
+
+                console.log( mensaje );
+
+            } catch ( error ) {
+                console.error(`Error: ${error.message}`);
+            } finally {
+                console.log('Fin del programa');
+            }
+        }
+
+        esPar(89);
+        esPar(10);
+        esPar('abc');
+
+    </script>
+</body>
+</html>

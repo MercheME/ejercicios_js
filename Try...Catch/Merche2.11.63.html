@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 63</title>
+</head>
+<body>
+    <script>
+        function realizarOperacion(a, b, operador) {
+            try {
+                let resultado;
+
+                switch (operador) {
+                    case '+':
+                        resultado = a + b;
+                        break;
+                    case '-':
+                        resultado = a - b;
+                        break;
+                    case '*':
+                        resultado = a * b;
+                        break;
+                    case '/':console.log(`El resultado de la operación ${a} ${operador} ${b} es: ${resultado}`);
+                        resultado = a / b;
+                        break;
+                    default:
+                        throw new Error("Operador no válido.");    
+                }
+
+                console.log(`El resultado de la operación ${a} ${operador} ${b} es: ${resultado}`);
+
+            } catch (error) {
+                console.error(`Error: ${error.message}`);
+            } finally {
+                console.log("Los cálculos han sido completados");
+            }
+        }
+
+        realizarOperacion(10, 6, '+');
+        realizarOperacion(20, 5, '/');
+    </script>
+</body>
+</html>

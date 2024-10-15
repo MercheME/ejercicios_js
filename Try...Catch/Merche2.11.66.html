@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 66</title>
+</head>
+<body>
+    <script>
+
+        function leerArchivo( simularError = false ) {
+            return new Promise( (resolve, reject) => {
+                setTimeout( () => {
+                    if ( simularError ) {
+                        reject('Error al leer el archivo');
+                    } else {
+                        resolve('Contenido del archivo leído correctamente');
+                    }
+                }, 1000);
+            });
+        }
+
+        function escribirArchivo() {
+            return new Promise( (resolve) => {
+                setTimeout( () => {
+                    resolve('Archivo escrito correctamente');
+                }, 1000); 
+            })
+        }
+
+        function cerrarArchivo() {
+            return new Promise ( (resolve) => {
+                setTimeout( () => {
+                    resolve('Archivo cerrado');
+                }, 500)
+            });
+        }
+
+        async function gestionarArchivo() {
+            try {
+                const contenidoLeido = await leerArchivo(false); // si cambias a true salta el Error
+                console.log(contenidoLeido);
+
+                const resultadoEscritura = await escribirArchivo();
+                console.log(resultadoEscritura);
+                
+            } catch ( error ) {
+                console.error('Ocurrió un error', error);
+                
+            } finally {
+                const cierre = await cerrarArchivo();
+                console.log(cierre);
+            }
+        }
+
+
+        gestionarArchivo()
+
+
+    </script>
+</body>
+</html>

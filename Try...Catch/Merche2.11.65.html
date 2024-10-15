@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 65</title>
+</head>
+<body>
+    <script>
+        function peticionAPI( exito = true ) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if(exito) { 
+                        resolve('Datos obtenidos correctamente.');
+                    } else {
+                        reject('Error en la petición');
+                    }
+                }, 1000) // Simula la espera de un segundo
+            })
+        }
+
+        // Función asincroma que hace la petición y controla el resultado
+
+        async function realizarPeticion() {
+            try {
+                const respuesta = await peticionAPI( true );
+                console.log('Respuesta de la API', respuesta);
+            } catch (error) {
+                console.error('Hubo un error:', error);
+            } finally {
+                console.log('La petición ha terminado'); 
+            }
+        }
+
+        realizarPeticion();
+        
+
+
+    </script>
+</body>
+</html>
