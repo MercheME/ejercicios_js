@@ -1,0 +1,27 @@
+﻿EJERCICIOS TEMA 2 JAVASCRIPT BÁSICO 
+
+Ejercicio 6 
+
+¿Qué devuelve cada expresión?. 
+Sin probar en la consola, debes adivinar que devolverá cada una de estas expresiones. ¿True o False? 
+
+Primera expresión: 
+let x = 30 
+let y = "a" 
+y === "b" || x >= 30 
+y === “b” -> Esto es FALSE, porque y es “a” y no es igual a “b”. 
+x >= 30 -> Esto es TRUE, porque x es 30 y cumple con que es igual (>=) a 30. 
+Por lo tanto, el resultado esperado sería TRUE, ya que como indica el operador lógico “||” debe de cumplirse al menos una condición para ser TRUE. En este caso se cumple la segunda condición a evaluar. 
+
+Segunda expresión 
+let x = 15 
+let y = 2 
+!( x == "15" || x === y ) && !(y !== 2 && x <= y) 
+
+RESPUESTA 
+En la primera parte “!( x == "15" || x === y)“, se cumple x==”15” (true) porque compara ignorando el tipo, el valor es el mismo mientras que x === y no se cumple (false). 
+Como se cumple una de las dos expresiones devolvería true, pero como tiene el símbolo de “!” al comienzo niega la expresión anterior, por lo cual sería FALSE. 
+En la segunda parte “!(y !== 2 && x <= y)”, y !== 2 no se cumple, porque y es igual a 2 (false), x <= y tampoco se cumple porque x es 15 y la y es mayor que 2 (false). 
+Como ambas son falsas debería ser falso, pero también tiene el operador “!” que niega la expresión anterior, por lo tanto sería TRUE. 
+Finalmente nos quedaría “false && true”, esto devolvería FALSE.
+
