@@ -1,6 +1,5 @@
 
 
-
 class Configuracion {
     // Propiedad estática para mantener una única instancia
     static instancia = null;
@@ -37,7 +36,6 @@ class Configuracion {
     }
 
 }
-
 
 
 // Crear la primera instancia
