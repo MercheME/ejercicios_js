@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicios DOM</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .box { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        .highlight { background-color: yellow; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios DOM</h1>
+    
+    <div id="ejercicio17" class="box">
+        <h2>Ejercicio 1: Selección y Contenido</h2>
+        <p id="text1">Este es un texto modificable</p>
+        <button onclick="cambiarTexto()">Cambiar Texto</button>
+    </div>
+
+    <div id="ejercicio18" class="box">
+        <h2>Ejercicio 2: Estilos</h2>
+        <p id="text2">Click para cambiar estilo</p>
+        <button onclick="cambiarEstilo()">Cambiar Estilo</button>
+    </div>
+
+    <div id="ejercicio19" class="box">
+        <h2>Ejercicio 3: Visibilidad</h2>
+        <p id="text3">Este párrafo puede ocultarse</p>
+        <button onclick="toggleVisibilidad()">Toggle Visibilidad</button>
+    </div>
+
+    <div id="ejercicio20" class="box">
+        <h2>Ejercicio 4: Lista Dinámica</h2>
+        <ul id="lista"></ul>
+        <button onclick="agregarElemento()">Agregar Elemento</button>
+    </div>
+
+    <div id="ejercicio21" class="box">
+        <h2>Ejercicio 5: Eventos</h2>
+        <div id="mouseArea" style="width:200px; height:100px; background-color:#f0f0f0;">
+            Mueve el ratón aquí
+        </div>
+        <p id="coordenadas"></p>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

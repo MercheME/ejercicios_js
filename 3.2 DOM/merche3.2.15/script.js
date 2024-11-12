@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
-
 document.getElementById('mouseInfo').addEventListener('mousemove', function(event) {
     this.textContent = `Coordenadas del ratón: X: ${event.clientX}, Y: ${event.clientY}`;
 });
