@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicios DOM</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .container { border: 2px solid #ccc; padding: 15px; margin: 10px 0; }
+        .draggable { 
+            width: 100px; 
+            height: 100px; 
+            background: #007bff; 
+            position: absolute;
+            cursor: move;
+        }
+        .dropzone { 
+            width: 300px; 
+            height: 300px; 
+            border: 2px dashed #ccc;
+            margin: 20px 0;
+        }
+        .tree-node { margin-left: 20px; }
+        .selected { background-color: yellow; }
+        .form-error { color: red; font-size: 12px; }
+        .btn { 
+            display: inline-block; 
+            padding: 10px 20px;
+            margin: 5px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+        } 
+        .btn-secondary { 
+            background-color: #6c757d; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios DOM</h1>
+
+    <div id="ejercicio22" class="container">
+        <h2>Ejercicio 22: Árbol DOM Dinámico</h2>
+        <div id="treeRoot"></div>
+        <button onclick="agregarNodoArbol()">Agregar Nodo</button>
+        <button onclick="eliminarNodoSeleccionado()">Eliminar Seleccionado</button>
+    </div>
+
+    <div id="ejercicio23" class="container">
+        <h2>Ejercicio 23: Drag and Drop</h2>
+        <div id="draggable" class="draggable"></div>
+        <div id="dropzone" class="dropzone">Zona de soltar</div>
+    </div>
+
+    <div id="ejercicio24" class="container">
+        <h2>Ejercicio 24: Validación de Formulario</h2>
+        <form id="validationForm">
+            <div>
+                <label>Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+                <div id="nombreError" class="form-error"></div>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="email" id="email" name="email">
+                <div id="emailError" class="form-error"></div>
+            </div>
+            <div>
+                <label>Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono">
+                <div id="telefonoError" class="form-error"></div>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div id="ejercicio25" class="container">
+        <h2>Ejercicio 25: Observador de Mutaciones</h2>
+        <div id="observedElement">Elemento observado</div>
+        <button onclick="modificarElementoObservado()">Modificar Elemento</button>
+    </div>
+
+    <div id="ejercicio26" class="container">
+        <h2>Ejercicio 26: Delegación de Eventos</h2>
+        <div id="buttonContainer"></div>
+        <button onclick="agregarBotonDinamico()">Agregar Botón</button>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
