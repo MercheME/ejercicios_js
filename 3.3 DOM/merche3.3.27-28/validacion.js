@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         handleFiles(dt.files);
     }
 
-    // Process and validate files
+    // Procesar y validar archivos
     function handleFiles(files) {
         files = Array.from(files); // Convertir FileList a array
 
