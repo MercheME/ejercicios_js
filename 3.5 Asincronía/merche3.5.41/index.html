@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="reservas.js"></script>
+    <style> 
+        .mesa { 
+            display: inline-block; 
+            width: 100px; 
+            height: 100px; 
+            margin: 10px; 
+            text-align: center; 
+            line-height: 100px; 
+            border-radius: 10px; 
+            } 
+        .disponible { 
+            background-color: #a5d6a7; 
+            } 
+        .reservada { 
+            background-color: #ef9a9a; 
+            } 
+    </style>
+</head>
+<body>
+    <h1>Estado de las Mesas</h1> 
+    <div id="estadoMesas"></div> 
+    
+    <button onclick="simular()">Simular Reservas</button> 
+    <script>
+        function actualizarVista() { 
+            const estadoMesas = document.getElementById('estadoMesas'); 
+
+            estadoMesas.innerHTML = ''; 
+            restaurante.mesas.forEach((mesa, index) => { 
+                const reservada = restaurante.reservas.find(reserva => reserva.mesa === mesa); 
+                const div = document.createElement('div'); 
+
+                div.className = `mesa ${reservada ? 'reservada' : 'disponible'}`; 
+                div.textContent = `Mesa ${index + 1}`; estadoMesas.appendChild(div); 
+                }
+            ); 
+        } 
+        
+        function simular() { 
+            restaurante.simularReservas(); 
+            setTimeout(() => { 
+                actualizarVista(); 
+                restaurante.mostrarEstado(); 
+
+            }, 1000); 
+        }
+        
+        actualizarVista(); 
+
+    </script>
+</body>
+</html>
