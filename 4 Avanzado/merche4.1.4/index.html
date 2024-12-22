@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Tareas</title>
+    <style>
+        .completed { text-decoration: line-through; color: gray; }
+        #taskList { list-style-type: none; padding: 0; }
+        #taskList li { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 10px; 
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Gestor de Tareas</h1>
+        
+        <form id="taskForm">
+            <input type="text" id="taskInput" placeholder="Nueva tarea" required>
+            <select id="prioritySelect">
+                <option value="baja">Baja</option>
+                <option value="media">Media</option>
+                <option value="alta">Alta</option>
+            </select>
+            <button type="submit">Añadir Tarea</button>
+        </form>
+
+        <div id="filterSection">
+            <label>Filtrar por:</label>
+            <select id="filterSelect">
+                <option value="todas">Todas</option>
+                <option value="pendientes">Pendientes</option>
+                <option value="completadas">Completadas</option>
+            </select>
+        </div>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
