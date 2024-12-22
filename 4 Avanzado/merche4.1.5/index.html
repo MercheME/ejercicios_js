@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicación de Clima</title>
+    <style>
+        #weatherApp {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #savedLocations {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .location-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div id="weatherApp">
+        <h1>Aplicación de Clima</h1>
+        
+        <form id="locationForm">
+            <input type="text" id="cityInput" placeholder="Introduce una ciudad" required>
+            <button type="submit">Buscar Clima</button>
+        </form>
+
+        <div id="weatherResult"></div>
+
+        <div id="savedLocations">
+            <h2>Ubicaciones Guardadas</h2>
+            <ul id="locationList"></ul>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+   
+</body>
+</html>
