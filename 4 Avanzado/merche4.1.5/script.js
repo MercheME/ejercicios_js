@@ -14,9 +14,15 @@ function getWeather(ciudad) {
 function mostrarTiempo(data) {
     const weatherResult = document.getElementById('weatherResult');
 
+    const iconCode = data.weather[0].icon;
+    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
+
+    const tempCelsius = (data.main.temp - 273.15).toFixed(2);
+
     weatherResult.innerHTML = `
+        <img src="${iconUrl}" alt="Icono del clima" />
         <h3>Clima de ${data.name}</h3>
-        <p>Temperatura: ${data.main.temp} °C</p>
+        <p>Temperatura: ${tempCelsius} °C</p>
         <p>Condición: ${data.weather[0].description}</p>
         <p>Humedad: ${data.main.humidity}%</p>
         <p>Viento: ${data.wind.speed} m/s</p>
