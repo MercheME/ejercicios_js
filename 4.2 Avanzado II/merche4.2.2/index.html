@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        .error { color: red; display: none; }
+        form { margin: 20px; }
+        input { display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h2>Ejercicio 2: Validación de Formulario</h2>
+    <p>Implementa la validación del siguiente formulario:</p>
+    <ul>
+        <li>El nombre no puede estar vacío</li>
+        <li>El email debe tener un formato válido</li>
+        <li>La contraseña debe tener al menos 6 caracteres</li>
+    </ul>
+
+    <form id="registroForm">
+        <input type="text" id="nombre" placeholder="Nombre">
+        <span class="error" id="nombreError">El nombre es requerido</span>
+        
+        <input type="email" id="email" placeholder="Email">
+        <span class="error" id="emailError">Email inválido</span>
+        
+        <input type="password" id="password" placeholder="Contraseña">
+        <span class="error" id="passwordError">La contraseña debe tener al menos 6 caracteres</span>
+        
+        <button type="submit">Registrar</button>
+    </form>
+
+    <script src="./script.js"></script>
+    
+</body>
+</html>

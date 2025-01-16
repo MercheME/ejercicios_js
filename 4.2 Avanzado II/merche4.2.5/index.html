@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 5 - Filtrado</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .product { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h2>Ejercicio 5: Filtrado de Productos</h2>
+    <p>Implementa un sistema de filtrado que:</p>
+    <ul>
+        <li>Filtre por nombre mientras el usuario escribe</li>
+        <li>Filtre por categoría</li>
+        <li>Combine ambos filtros</li>
+        <li>Añada animaciones al filtrar</li>
+    </ul>
+
+    <input type="text" id="searchInput" placeholder="Buscar productos...">
+    <select id="categoryFilter">
+        <option value="">Todas las categorías</option>
+        <option value="electronics">Electrónica</option>
+        <option value="clothing">Ropa</option>
+        <option value="books">Libros</option>
+        <option value="art">Arte</option>
+        <option value="gardenning">Jardinería</option>
+    </select>
+
+    <div id="productList">
+        <div class="product" data-category="electronics">
+            <h3>iPhone 13</h3>
+            <p>Categoría: Electrónica</p>
+        </div>
+        <div class="product" data-category="electronics">
+            <h3>Samsung TV</h3>
+            <p>Categoría: Electrónica</p>
+        </div>
+        <div class="product" data-category="clothing">
+            <h3>Camisa Azul</h3>
+            <p>Categoría: Ropa</p>
+        </div>
+        <div class="product" data-category="clothing">
+            <h3>Vaqueros</h3>
+            <p>Categoría: Ropa</p>
+        </div>
+        <div class="product" data-category="books">
+            <h3>Libro 'Al este con el oseste'</h3>
+            <p>Categoría: Libros</p>
+        </div>
+        <div class="product" data-category="art">
+            <h3>Pincel 8mm</h3>
+            <p>Categoría: Arte</p>
+        </div>
+        <div class="product" data-category="art">
+            <h3>Papel gramaje de 2mm</h3>
+            <p>Categoría: Arte</p>
+        </div>
+        <div class="product" data-category="books">
+            <h3>Libro 'Ponche de ácido lisérgico'</h3>
+            <p>Categoría: Libros</p>
+        </div>
+        <div class="product" data-category="gardenning">
+            <h3>Semillas de tomates</h3>
+            <p>Categoría: Jardinería</p>
+        </div>
+        <div class="product" data-category="gardenning">
+            <h3>Regadera</h3>
+            <p>Categoría: Jardinería</p>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
